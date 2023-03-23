@@ -21,7 +21,7 @@
 #
 # If you have any questions or need help contact https://support.42crunch.com
 
-name: "42Crunch REST API Security Testing"
+name: "new-feature-workflow"
 
 # follow standard Code Scanning triggers
 on: 
@@ -36,7 +36,7 @@ permissions:
   contents: read
 
 jobs:
-  rest-api-static-security-testing:
+  rest-api-security-testing:
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: 42Crunch REST API Static Security Testing
+      - name: 42crunch-api-testing
         uses: 42Crunch/api-security-audit-action@v3
         with:
           # Please create free account at https://platform.42crunch.com/register
@@ -58,3 +58,5 @@ jobs:
           upload-to-code-scanning: true
           # Github token for uploading the results
           github-token: ${{ github.token }}
+
+    
