@@ -3,5 +3,4 @@ audit:
     main: 
       discovery:
         search:
-          - OASFiles/Discovery/*.*
           - OASFiles/*.json
