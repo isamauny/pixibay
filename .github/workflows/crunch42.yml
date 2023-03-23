@@ -77,18 +77,18 @@ jobs:
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
           data: | 
-            {
-              "token": ${{ secrets.SCAN_TOKEN }},
-              "name": 'scand-${{ github.GITHUB_RUN_ID }}',
-              "platformService": '${{ job.PLATFORM_SERVICE_ENDPOINT }}',
+            '{
+              "token": "${{ secrets.SCAN_TOKEN }}",
+              "name": "scand-${{ github.run_id }}",
+              "platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}",
               "scandImage": "42crunch/scand-agent:v2.0.0-rc04",
               "expirationTime": 600,
               "env": {
                   "SCAN42C_host": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api",
                   "SCAN42C_user": "user-inbound@acme.com",
-                  "SCAN42C_pass": ${{ secrets.USERSCAN_PASS }}
+                  "SCAN42C_pass": "${{ secrets.USER_PASS }}"
               }
-            }
+            }'
           
 
 
