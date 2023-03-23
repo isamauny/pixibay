@@ -1,0 +1,820 @@
+{
+    "runtimeConfiguration": {
+        "logLevel": "debug",
+        "logDestination": "stdout+platform",
+        "maxLogFileSize": 2147483648,
+        "headerNameRequestId": "x-scan-request-id",
+        "headerNameScenarioId": "x-scan-scenario-id",
+        "flowrate": 10,
+        "timeout": 30,
+        "followRedirection": true,
+        "happyPathRetry": 1,
+        "happyPathOnly": false,
+        "maxScanTime": 3600,
+        "memoryLimit": 2147483648,
+        "memoryTimeSpan": 10,
+        "indexed": false,
+        "prettify": false,
+        "maxBodySizeScan": 10485760,
+        "maxHttpResponseSizeHappyPathReport": 0,
+        "maxBodySizeHappyPathReport": 8092,
+        "maxHttpResponseSizeTestReport": 0,
+        "maxBodySizeTestReport": 8092,
+        "errorsOnly": true,
+        "maxIssues": 10000,
+        "maxReportSize": 104857600
+    },
+    "authorizationTests": {
+        "DeletePicture": {
+            "key": "authentication-swapping-bola",
+            "source": [
+                "access-token/User1"
+            ],
+            "target": [
+                "access-token/User2"
+            ]
+        },
+        "AdminOnlyOps": {
+            "key": "authentication-swapping-bfla",
+            "source": [
+                "access-token/Admin"
+            ],
+            "target": [
+                "access-token/User2"
+            ]
+        }
+    },
+    "authenticationDetails": [
+        {
+            "access-token-env": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-access-token",
+                "default": "access-token",
+                "credentials": {
+                    "access-token": {
+                        "description": "access-token from cmd line- not used - sample only",
+                        "credential": "{{inbound_token}}"
+                    }
+                }
+            },
+            "custom-token": {
+                "credentials": {
+                    "User": {
+                        "credential": "{{access-token-custom}}",
+                        "description": "Token for custom requests"
+                    }
+                },
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-access-token",
+                "ttl": "120s",
+                "default": "User"
+            },
+            "access-token": {
+                "credentials": {
+                    "User1": {
+                        "credential": "{{access-token-user1}}",
+                        "description": "User1 Token"
+                    },
+                    "User2": {
+                        "credential": "{{access-token-user2}}",
+                        "description": "User2 Token"
+                    },
+                    "Admin": {
+                        "credential": "{{access-token-admin}}",
+                        "description": "Admin User Token"
+                    }
+                },
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-access-token",
+                "ttl": "120s",
+                "default": "User1"
+            }
+        }
+    ],
+    "playbook": {
+        "before": [
+            {
+                "$ref": "#/requests/central-register",
+                "auth": [],
+                "environment": {
+                    "dynamic_pass": "hellopixi",
+                    "dynamic_user": "userscan-custom@acme.com"
+                },
+                "responseProcessing": {
+                    "variableAssignments": {
+                        "httpStatus": 200,
+                        "contentType": "application/json; charset=utf-8",
+                        "variables": {
+                            "access-token-custom": "${json_pointer(json(http.response.body),'/token')}",
+                            "userid-customuser": "${json_pointer(json(http.response.body),'/_id')}"
+                        }
+                    }
+                }
+            },
+            {
+                "$ref": "#/requests/central-register",
+                "auth": [],
+                "environment": {
+                    "dynamic_pass": "hellopixi",
+                    "dynamic_user": "userscan-user1@acme.com"
+                },
+                "responseProcessing": {
+                    "variableAssignments": {
+                        "httpStatus": 200,
+                        "contentType": "application/json; charset=utf-8",
+                        "variables": {
+                            "access-token-user1": "${json_pointer(json(http.response.body),'/token')}",
+                            "userid-user1": "${json_pointer(json(http.response.body),'/_id')}"
+                        }
+                    }
+                }
+            },
+            {
+                "$ref": "#/requests/login",
+                "auth": [],
+                "environment": {
+                    "inbound_pass": "hellopixi",
+                    "inbound_user": "userscan-admin@acme.com"
+                },
+                "responseProcessing": {
+                    "variableAssignments": {
+                        "httpStatus": 200,
+                        "contentType": "application/json; charset=utf-8",
+                        "variables": {
+                            "access-token-admin": "${json_pointer(json(http.response.body),'/token')}"
+                        }
+                    }
+                }
+            },
+            {
+                "$ref": "#/requests/central-register",
+                "auth": [],
+                "environment": {
+                    "dynamic_pass": "hellopixi",
+                    "dynamic_user": "userscan-user2@acme.com"
+                },
+                "responseProcessing": {
+                    "variableAssignments": {
+                        "httpStatus": 200,
+                        "contentType": "application/json; charset=utf-8",
+                        "variables": {
+                            "access-token-user2": "${json_pointer(json(http.response.body),'/token')}",
+                            "userid-user2": "${json_pointer(json(http.response.body),'/_id')}"
+                        }
+                    }
+                }
+            }
+        ],
+        "after": [
+            {
+                "$ref": "#/requests/deleteUser",
+                "auth": [
+                    "access-token/Admin"
+                ],
+                "environment": {
+                    "user_id": "{{userid-user1}}"
+                }
+            },
+            {
+                "$ref": "#/requests/deleteUser",
+                "auth": [
+                    "access-token/Admin"
+                ],
+                "environment": {
+                    "user_id": "{{userid-user2}}"
+                }
+            },
+            {
+                "$ref": "#/requests/deleteUser",
+                "auth": [
+                    "access-token/Admin"
+                ],
+                "environment": {
+                    "user_id": "{{userid-customuser}}"
+                }
+            }
+        ],
+        "paths": {
+            "/user/pictures": {
+                "get": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/listUserPictures"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "/picture/upload": {
+                "post": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "environment": {
+                                        "contents": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMy4wLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA5MC43IDkwLjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDkwLjcgOTAuNzsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6IzdGNDg4RTt9DQoJLnN0MXtmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iODQuNiw2OC4xIDg0LjYsMjIuOCA0NS40LDAuMiA2LjIsMjIuOCA2LjIsNjguMSA0NS40LDkwLjcgIi8+DQo8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNjAuOCw2NmMtMi40LDAtNC40LTAuNy02LjEtMi4xYy0xLjctMS40LTIuNS0zLjQtMi41LTZjMC0yLjcsMC45LTQuNywyLjYtNi4xYzEuNy0xLjQsMy44LTIsNi4yLTINCgljMi42LDAsNC45LDAuNyw2LjgsMi4xdi01Yy0xLjctMS0zLjctMS42LTUuOS0xLjh2LTAuMWwtMTcsMGMwLTAuMywwLTAuNiwwLjEtMWMwLjEtMC4zLDAuMi0wLjYsMC4zLTAuOWMwLjEtMC4zLDAuMy0wLjUsMC41LTAuOA0KCWMwLjItMC4zLDAuNS0wLjYsMC42LTAuOGMwLjItMC4yLDAuNS0wLjUsMC45LTAuOGMwLjQtMC4zLDAuNy0wLjUsMC45LTAuN2MwLjItMC4xLDAuNi0wLjQsMS4xLTAuN2MwLjUtMC4zLDAuOS0wLjUsMS4xLTAuNw0KCWMwLjItMC4xLDAuNi0wLjQsMS4yLTAuN2MwLjYtMC4zLDEtMC42LDEuMi0wLjdjMi43LTEuNiw0LjktMy4yLDYuNC00LjljMS42LTEuNywyLjQtMy43LDIuNC02LjFjMC0yLjktMS01LTMuMS02LjYNCgljLTItMS41LTQuNy0yLjMtOC4xLTIuM2MtMy45LDAtNy40LDEuMS0xMC41LDMuMnY1LjFjMy4zLTIuNCw2LjYtMy41LDEwLjEtMy41YzIsMCwzLjUsMC40LDQuNiwxLjFjMS4xLDAuNywxLjcsMS44LDEuNywzLjENCgljMCwxLjUtMC42LDIuOC0xLjksNGMtMC44LDAuNy0yLjQsMS44LTUuMSwzLjNjLTIuNiwxLjYtNC40LDIuNy01LjMsMy41Yy0xLjcsMS4zLTIuOSwyLjgtMy44LDQuNFYyOS45aC01LjRMMTgsNTAuNnY0LjVoMTcuMnY2LjUNCgloNS4xdi02LjVoMC4xdi00LjZoLTAuMXYtMC45aDguOWMtMS44LDIuMS0yLjcsNS0yLjcsOC41YzAsNC4xLDEuMyw3LjMsNCw5LjVjMi42LDIuMiw1LjgsMy4zLDkuMywzLjNjMy4xLDAsNS44LTAuNiw4LjItMS43di01LjENCglDNjUuOCw2NS40LDYzLjQsNjYsNjAuOCw2NnogTTM1LjIsNTAuNUgyMy45bDExLjMtMTMuOFY1MC41eiIvPg0KPC9zdmc+DQo=",
+                                        "title": "upload from create pic"
+                                    },
+                                    "$ref": "#/requests/uploadPicture"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "/picture/{id}": {
+                "delete": {
+                    "authorizationTests": [
+                        "DeletePicture"
+                    ],
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "environment": {
+                                        "contents": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMy4wLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA5MC43IDkwLjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDkwLjcgOTAuNzsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6IzdGNDg4RTt9DQoJLnN0MXtmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iODQuNiw2OC4xIDg0LjYsMjIuOCA0NS40LDAuMiA2LjIsMjIuOCA2LjIsNjguMSA0NS40LDkwLjcgIi8+DQo8cGF0aCBjbGFzcz0ic3QxIiBkPSJNNjAuOCw2NmMtMi40LDAtNC40LTAuNy02LjEtMi4xYy0xLjctMS40LTIuNS0zLjQtMi41LTZjMC0yLjcsMC45LTQuNywyLjYtNi4xYzEuNy0xLjQsMy44LTIsNi4yLTINCgljMi42LDAsNC45LDAuNyw2LjgsMi4xdi01Yy0xLjctMS0zLjctMS42LTUuOS0xLjh2LTAuMWwtMTcsMGMwLTAuMywwLTAuNiwwLjEtMWMwLjEtMC4zLDAuMi0wLjYsMC4zLTAuOWMwLjEtMC4zLDAuMy0wLjUsMC41LTAuOA0KCWMwLjItMC4zLDAuNS0wLjYsMC42LTAuOGMwLjItMC4yLDAuNS0wLjUsMC45LTAuOGMwLjQtMC4zLDAuNy0wLjUsMC45LTAuN2MwLjItMC4xLDAuNi0wLjQsMS4xLTAuN2MwLjUtMC4zLDAuOS0wLjUsMS4xLTAuNw0KCWMwLjItMC4xLDAuNi0wLjQsMS4yLTAuN2MwLjYtMC4zLDEtMC42LDEuMi0wLjdjMi43LTEuNiw0LjktMy4yLDYuNC00LjljMS42LTEuNywyLjQtMy43LDIuNC02LjFjMC0yLjktMS01LTMuMS02LjYNCgljLTItMS41LTQuNy0yLjMtOC4xLTIuM2MtMy45LDAtNy40LDEuMS0xMC41LDMuMnY1LjFjMy4zLTIuNCw2LjYtMy41LDEwLjEtMy41YzIsMCwzLjUsMC40LDQuNiwxLjFjMS4xLDAuNywxLjcsMS44LDEuNywzLjENCgljMCwxLjUtMC42LDIuOC0xLjksNGMtMC44LDAuNy0yLjQsMS44LTUuMSwzLjNjLTIuNiwxLjYtNC40LDIuNy01LjMsMy41Yy0xLjcsMS4zLTIuOSwyLjgtMy44LDQuNFYyOS45aC01LjRMMTgsNTAuNnY0LjVoMTcuMnY2LjUNCgloNS4xdi02LjVoMC4xdi00LjZoLTAuMXYtMC45aDguOWMtMS44LDIuMS0yLjcsNS0yLjcsOC41YzAsNC4xLDEuMyw3LjMsNCw5LjVjMi42LDIuMiw1LjgsMy4zLDkuMywzLjNjMy4xLDAsNS44LTAuNiw4LjItMS43di01LjENCglDNjUuOCw2NS40LDYzLjQsNjYsNjAuOCw2NnogTTM1LjIsNTAuNUgyMy45bDExLjMtMTMuOFY1MC41eiIvPg0KPC9zdmc+DQo=",
+                                        "title": "Upload from before block"
+                                    },
+                                    "responseProcessing": {
+                                        "variableAssignments": {
+                                            "httpStatus": 200,
+                                            "contentType": "application/json; charset=utf-8",
+                                            "variables": {
+                                                "before_picture_id": "${json_pointer(json(http.response.body),'/_id')}"
+                                            }
+                                        }
+                                    },
+                                    "$ref": "#/requests/uploadPicture"
+                                },
+                                {   
+                                    "environment": {
+                                        "picture_id": "{{before_picture_id}}"
+                                    },
+                                    "$ref": "#/requests/deletePicture"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "/user/login": {
+                "post": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/login"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": []
+                }
+            },
+            "/user/register": {
+                "post": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/register"
+                                },
+                                {
+                                    "$ref": "#/requests/deleteUser"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": []
+                }
+            },
+            "/admin/users/search": {
+                "get": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/user_search"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": []
+                }
+            },
+            "/user/edit_info": {
+                "put": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/updateUserInfo"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": [
+                        {
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/makeUserAdmin"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "/user/info": {
+                "get": {
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "$ref": "#/requests/getUserInfo"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": []
+                }
+            },
+            "/admin/all_users": {
+                "get": {
+                    "authorizationTests": [
+                        "AdminOnlyOps"
+                    ],
+                    "happyPaths": [
+                        {
+                            "key": "happy.path.success",
+                            "requests": [
+                                {
+                                    "auth": [
+                                        "access-token/Admin"
+                                    ],
+                                    "$ref": "#/requests/all_users"
+                                }
+                            ]
+                        }
+                    ],
+                    "conformanceRequests": [],
+                    "customRequests": []
+                }
+            }
+        }
+    },
+    "environment": {
+        "inbound_user": "env('SCAN42C_user')",
+        "inbound_pass": "env('SCAN42C_pass')",
+        "host": "env_with_default('SCAN42C_host','https://photo-demo.westeurope.cloudapp.azure.com/version1/api')"
+    },
+    "requests": {
+        "listUserPictures": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/pictures",
+                    "method": "get",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        },
+        "deletePicture": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/picture/{id}",
+                    "method": "delete",
+                    "pathParameters": {
+                        "id": "{{picture_id}}"
+                    },
+                    "queryParameters": {},
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        },
+        "uploadPicture": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/picture/upload",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "contents": "{{contents}}",
+                            "title": "{{title}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            },
+            "responseProcessing": {
+                "variableAssignments": {
+                    "httpStatus": 200,
+                    "contentType": "application/json; charset=utf-8",
+                    "variables": {
+                        "picture_id": "${json_pointer(json(http.response.body),'/_id')}"
+                    }
+                }
+            }
+        },
+        "login": {
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/login",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "pass": "{{inbound_pass}}",
+                            "user": "{{inbound_user}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200",
+                    "202"
+                ]
+            }
+        },
+        "user_search": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/admin/users/search",
+                    "method": "get",
+                    "pathParameters": {},
+                    "queryParameters": {
+                        "search": "pixi"
+                    },
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        },
+        "all_users": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/admin/all_users",
+                    "method": "get",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        },
+        "central-login": {
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/login",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "pass": "{{dynamic_pass}}",
+                            "user": "{{dynamic_user}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200",
+                    "202"
+                ]
+            },
+            "responseProcessing": {
+                "variableAssignments": {
+                    "httpStatus": 200,
+                    "contentType": "application/json; charset=utf-8",
+                    "variables": {
+                        "access-token": "${json_pointer(json(http.response.body),'/token')}"
+                    }
+                }
+            }
+        },
+        "getUserInfo": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/info",
+                    "method": "get",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            },
+            "responseProcessing": {
+                "variableAssignments": {
+                    "httpStatus": 200,
+                    "contentType": "application/json; charset=utf-8",
+                    "variables": {
+                        "user_id": "${json_pointer(json(http.response.body),'/0/_id')}"
+                    }
+                }
+            }
+        },
+        "register": {
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/register",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "account_balance": 150,
+                            "is_admin": false,
+                            "name": "{{$random}}",
+                            "pass": "{{$random}}",
+                            "user": "{{$random}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "202",
+                    "200"
+                ]
+            },
+            "responseProcessing": {
+                "variableAssignments": {
+                    "httpStatus": 200,
+                    "contentType": "application/json; charset=utf-8",
+                    "variables": {
+                        "user_token": "${json_pointer(json(http.response.body),'/token')}",
+                        "user_id": "${json_pointer(json(http.response.body),'/_id')}"
+                    }
+                }
+            }
+        },
+        "central-register-admin": {
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/register",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "account_balance": 1000,
+                            "is_admin": true,
+                            "name": "{{$random}}",
+                            "pass": "{{dynamic_pass}}",
+                            "user": "{{dynamic_user}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "202",
+                    "200"
+                ]
+            }
+        },
+        "central-register": {
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/register",
+                    "method": "post",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "account_balance": 1000,
+                            "is_admin": false,
+                            "name": "{{$random}}",
+                            "pass": "{{dynamic_pass}}",
+                            "user": "{{dynamic_user}}"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "202",
+                    "200"
+                ]
+            }
+        },
+        "updateUserInfo": {
+            "auth": [
+                "access-token/User1"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/edit_info",
+                    "method": "put",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "email": "email@was.updated",
+                            "name": "Updated User"
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        },
+        "makeUserAdmin": {
+            "auth": [
+                "custom-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/user/edit_info",
+                    "method": "put",
+                    "pathParameters": {},
+                    "queryParameters": {},
+                    "headerParameters": {
+                        "Content-Type": "application/json"
+                    },
+                    "cookieParameters": {},
+                    "requestBody": {
+                        "mode": "json",
+                        "json": {
+                            "email": "email@was.updated",
+                            "name": "Updated Custom User",
+                            "is_admin": true
+                        }
+                    }
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "400"
+                ]
+            }
+        },
+        "deleteUser": {
+            "auth": [
+                "access-token"
+            ],
+            "request": {
+                "type": "42c",
+                "requestDetails": {
+                    "host": "{{host}}",
+                    "path": "/admin/user/{userid}",
+                    "method": "delete",
+                    "pathParameters": {
+                        "userid": "{{user_id}}"
+                    },
+                    "queryParameters": {},
+                    "headerParameters": {},
+                    "cookieParameters": {},
+                    "requestBody": null
+                }
+            },
+            "responseAnalysisBehavior": {
+                "httpStatusExpected": [
+                    "200"
+                ]
+            }
+        }
+    }
+}
