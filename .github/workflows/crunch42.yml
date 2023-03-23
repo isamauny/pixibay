@@ -60,9 +60,7 @@ jobs:
           platform-url: https://demolabs.42crunch.cloud
           default-collection-name: Code-Scanning-Import
           # Upload results to Github code scanning
-          upload-to-code-scanning: true
-          # Github token for uploading the results
-          github-token: ${{ github.token }}
+          upload-to-code-scanning: false
 
   run_conformance_scan:
     runs-on: ubuntu-latest
