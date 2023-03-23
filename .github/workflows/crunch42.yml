@@ -32,6 +32,10 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ main ]
 
+env:
+  PLATFORM_URL: https://demolabs.42crunch.cloud
+  PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
+
 permissions:
   contents: read
 
@@ -42,7 +46,8 @@ jobs:
       security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout repo
+        uses: actions/checkout@v3
 
       - name: 42crunch-api-testing
         uses: 42Crunch/api-security-audit-action@v3
@@ -58,5 +63,39 @@ jobs:
           upload-to-code-scanning: true
           # Github token for uploading the results
           github-token: ${{ github.token }}
+
+  run_conformance_scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for actions/checkout to fetch code
+    steps:
+      - name: Dynamic API testing
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: https://photo-demo.westeurope.cloudapp.azure.com/scand/api/job
+          method: POST
+          contentType: "application/json"
+          headers: |
+            {
+              "Accept": "application/json"
+            }
+          data: | 
+            {
+              "token": ${{SCAN_TOKEN}},
+              "name": scand-${{GITHUB_RUN_ID}},
+              "platformService": ${{PLATFORM_SERVICE_ENDPOINT}},
+              "scandImage": "42crunch/scand-agent:v2.0.0-rc04",
+              "expirationTime": 600,
+              "env": {
+                  "SCAN42C_host": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api",
+                  "SCAN42C_user": "user-inbound@acme.com",
+                  "SCAN42C_pass": "${{USER_PASS}}"
+              }
+            }
+        env:
+          SCAN_TOKEN: ${{ secrets.SCAN_TOKEN }}
+          USER_PASS: ${{ secrets.USERSCAN_PASS }}
+          
+
 
     
