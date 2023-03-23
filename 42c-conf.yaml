@@ -3,4 +3,4 @@ audit:
     main: 
       discovery:
         search:
-          - OASFiles/*.json
+          - OASFiles/pixi.json
