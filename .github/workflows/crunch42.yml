@@ -70,31 +70,25 @@ jobs:
       contents: read # for actions/checkout to fetch code
     steps:
       - name: Dynamic API testing
-        uses: fjogeleit/http-request-action@v1
+        uses: fjogeleit/http-request-action@v1.14.0
         with:
           url: https://photo-demo.westeurope.cloudapp.azure.com/scand/api/job
           method: POST
           contentType: "application/json"
-          headers: |
-            {
-              "Accept": "application/json"
-            }
+          customHeaders: '{"Accept": "application/json"}'
           data: | 
             {
-              "token": ${{SCAN_TOKEN}},
-              "name": scand-${{GITHUB_RUN_ID}},
-              "platformService": ${{PLATFORM_SERVICE_ENDPOINT}},
+              "token": ${{ secrets.SCAN_TOKEN }},
+              "name": 'scand-${{ github.GITHUB_RUN_ID }}',
+              "platformService": '${{ job.PLATFORM_SERVICE_ENDPOINT }}',
               "scandImage": "42crunch/scand-agent:v2.0.0-rc04",
               "expirationTime": 600,
               "env": {
                   "SCAN42C_host": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api",
                   "SCAN42C_user": "user-inbound@acme.com",
-                  "SCAN42C_pass": "${{USER_PASS}}"
+                  "SCAN42C_pass": ${{ secrets.USERSCAN_PASS }}
               }
             }
-        env:
-          SCAN_TOKEN: ${{ secrets.SCAN_TOKEN }}
-          USER_PASS: ${{ secrets.USERSCAN_PASS }}
           
 
 
