@@ -61,6 +61,7 @@ jobs:
           default-collection-name: Code-Scanning-Import
           # Upload results to Github code scanning
           upload-to-code-scanning: false
+          log-level: debug
           json-report: audit-${{ github.run_id }}
 
 
