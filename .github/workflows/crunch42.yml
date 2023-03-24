@@ -49,7 +49,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: 42crunch-api-testing
+      - name: 42crunch-static-api-testing
         uses: 42Crunch/api-security-audit-action@v3.5.0rc0
         with:
           # Please create free account at https://platform.42crunch.com/register
@@ -62,8 +62,13 @@ jobs:
           # Upload results to Github code scanning
           upload-to-code-scanning: false
           log-level: debug
-          json-report: audit-${{ github.run_id }}
-
+          json-report: auditreport-${{ github.run_id }}
+      - name: save-audit-report        
+        uses: actions/upload-artifact@v3
+        with:
+          name: audit-build-${{ github.run_id }}
+          path: auditreport-${{ github.run_id }}
+          if-no-files-found: error  
 
   run_42c_scan:
     runs-on: ubuntu-latest
@@ -71,7 +76,7 @@ jobs:
     permissions:
       contents: read # for actions/checkout to fetch code
     steps:
-      - name: Dynamic API testing
+      - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
           url: https://photo-demo.westeurope.cloudapp.azure.com/scand/api/job
@@ -79,7 +84,6 @@ jobs:
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
           data: '{"token": "${{ secrets.SCAN_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "42crunch/scand-agent:v2.0.0-rc04","expirationTime": 600,"env": { "SCAN42C_host": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api","SCAN42C_user": "user-inbound@acme.com","SCAN42C_pass": "${{ secrets.USER_PASS }}"}}'
-          
-
+      
 
     
