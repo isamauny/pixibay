@@ -63,7 +63,8 @@ jobs:
           upload-to-code-scanning: false
           log-level: debug
           json-report: auditreport-${{ github.run_id }}
-      - name: save-audit-report        
+      - name: save-audit-report
+        if: always()        
         uses: actions/upload-artifact@v3
         with:
           name: auditaction-report-${{ github.run_id }}
