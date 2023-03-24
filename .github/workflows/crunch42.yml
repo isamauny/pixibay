@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: audit-build-${{ github.run_id }}
-          path: auditreport-${{ github.run_id }}
+          path: auditreport-${{ github.run_id }}.json
           if-no-files-found: error  
 
   run_42c_scan:
