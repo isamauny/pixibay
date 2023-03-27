@@ -4,14 +4,16 @@ audit:
       discovery:
         search:
           - OASFiles/*.json
+
+    dev:
+      discovery:
+        search:
+          - OASFiles/*.json
           - OASFiles/Discovery/*.*
-
-
   prs:
     main:
       discovery:
         search:
           - OASFiles/pixi.json
-          - OASFiles/Discovery/*.*
 
 
