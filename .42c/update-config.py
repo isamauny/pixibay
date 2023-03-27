@@ -173,7 +173,10 @@ def main():
     if not quiet: print("[*] Updating Scan Configuration...")
     scan_token = update_config (apitoken, name, aid, filename)
     # Uncomment this for integration with Azure DevOps
-    subprocess.Popen(["echo", "##vso[task.setvariable variable=SCANV2_TOKEN;isoutput=true]{0}".format(scan_token)])
+    #subprocess.Popen(["echo", "##vso[task.setvariable variable=SCANV2_TOKEN;isoutput=true]{0}".format(scan_token)])
+    # Uncomment this for integration with GitHub actions
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        print(f'{"SCANV2_TOKEN"}={scan_token}', file=fh)
     if not quiet: print(f"Scan Token: {scan_token}")
     if not quiet: print("[*] Done!")
 
