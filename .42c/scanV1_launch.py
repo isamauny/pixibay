@@ -182,4 +182,5 @@ for uuid in apis_uuids:
         time.sleep(2) #delay two seconds
         _, token = retrieveScanConf(uuid) # get token
 
-print(f"::set-output name=SCANV1_TOKEN::{token}")
+#send to stdout
+print(token)

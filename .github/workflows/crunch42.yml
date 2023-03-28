@@ -87,11 +87,15 @@ jobs:
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
-          python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }}
+          login_response = $(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
+          echo $login_response
+          echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
       - name: upload_scan_config
         id: upload_scan_config
         run: | 
-          python .42c/scanV1_launch.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}} 
+          scanconfig_response = $(python .42c/scanV1_launch.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
+          echo $scanconfig_response
+          echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
@@ -99,5 +103,5 @@ jobs:
           method: POST
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
-          data: '{"token": "${{ steps.upload_scan_config.GITHUB_OUTPUT.SCANV2_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.GITHUB_OUTPUT.PIXI_TOKEN }}"}}'
+          data: '{"token": "${{ steps.upload_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
       
