@@ -64,9 +64,7 @@ def main():
     # Uncomment this for integration with Azure DevOps
     #subprocess.Popen(["echo", "##vso[task.setvariable variable=SCANV2_TOKEN;isoutput=true]{0}".format(scan_token)])
     # Uncomment this for integration with GitHub actions
-    print(f"::set-output name=PIXI_TOKEN::{user_token}")
-    if not quiet: print(f"User Token: {user_token}")
-    if not quiet: print("[*] Done!")
+    print(f"::set-output name=PIXI_TOKEN::{user_token}", file=sys.stdout)
 
 # -------------- Main Section ----------------------
 if __name__ == '__main__':

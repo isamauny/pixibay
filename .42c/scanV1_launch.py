@@ -183,4 +183,3 @@ for uuid in apis_uuids:
         _, token = retrieveScanConf(uuid) # get token
 
 print(f"::set-output name=SCANV1_TOKEN::{token}")
-print(token) # return as stdout
