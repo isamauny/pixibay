@@ -683,7 +683,7 @@
                   "title": {
                     "type": "string",
                     "pattern": "^[a-zA-Z0-9\\s]*$",
-                    "maxLength": 150
+                    "maxLength": 100
                   }
                 }
               }
