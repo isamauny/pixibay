@@ -97,6 +97,25 @@ def createScanConf(api_uuid, config):
     if r.status_code != 200:
         raise Exception("can't create scan config while creating scan conf: ", r.status_code)
 
+def getReference(github_reference: str):
+    
+  BRANCH_PREFIX = "refs/heads/";
+  TAG_PREFIX = "refs/tags/";
+  PR_PREFIX = "refs/pull/";
+
+  if (github_reference.startswith(BRANCH_PREFIX)):
+    branch = github_reference[len(BRANCH_PREFIX):]
+    return branch
+
+  if (github_reference.startswith(TAG_PREFIX)):
+    tag = github_reference[len(TAG_PREFIX):]
+    return tag
+
+  if (github_reference.startswith(PR_PREFIX)):
+    pr_id = github_reference[len(PR_PREFIX):-len("/merge")]
+    pr_info = f"PR:{pr_id}"
+    return pr_info
+
 def createSpecs(api_uuid):
     conf = CONTENT.copy()
     conf["customHeaders"]["target-url"] = target_url
@@ -147,7 +166,8 @@ credential = sys.argv[3]
 access_token = sys.argv[4]
 target_url = sys.argv[5]
 
-collection_technical_name = collection_repo_name+"@@"+collection_repo_branch
+collection_repo_reference = getReference(collection_repo_branch)
+collection_technical_name = collection_repo_name+"@@"+ collection_repo_reference
 
 print (collection_technical_name)
 

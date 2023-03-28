@@ -91,7 +91,7 @@ jobs:
       - name: upload_scan_config
         id: upload_scan_config
         run: | 
-          python .42c/scanV1_launch.py ${{ github.repository }} ${{ github.ref_name }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}} 
+          python .42c/scanV1_launch.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}} 
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
