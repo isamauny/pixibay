@@ -20,7 +20,6 @@ def obtain_token (name: str, password: str):
     response = requests.post(url, data=json.dumps(payload), headers=headers) 
 
     if response.status_code != 200:
-        print(f"Error: unable to login {response.status_code}")
         sys.exit(1)
     else:
         user_token = response.json().get('token')
@@ -59,7 +58,6 @@ def main():
     password = parsed_cli.user_pass
     TARGET_URL = parsed_cli.target
 
-    if not quiet: print(f"[*] User target URL {TARGET_URL}")
     user_token = obtain_token (user, password)
     # Uncomment this for integration with Azure DevOps
     #subprocess.Popen(["echo", "##vso[task.setvariable variable=SCANV2_TOKEN;isoutput=true]{0}".format(scan_token)])

@@ -169,8 +169,6 @@ target_url = sys.argv[5]
 collection_repo_reference = getReference(collection_repo_branch)
 collection_technical_name = collection_repo_name+"@@"+ collection_repo_reference
 
-print (collection_technical_name)
-
 collection_id = retrieveCollectionId()
 apis_uuids = retrieveApisUUIDs()
 
