@@ -182,6 +182,5 @@ for uuid in apis_uuids:
         time.sleep(2) #delay two seconds
         _, token = retrieveScanConf(uuid) # get token
 
-with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        print(f'{"SCANV1_TOKEN"}={token}', file=fh)
+print(f"::set-output name=SCANV1_TOKEN::{token}")
 print(token) # return as stdout
