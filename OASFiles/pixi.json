@@ -683,7 +683,7 @@
                   "title": {
                     "type": "string",
                     "pattern": "^[a-zA-Z0-9\\s]*$",
-                    "maxLength": 100
+                    "maxLength": 150
                   }
                 }
               }
@@ -751,7 +751,12 @@
         "parameters": [
           {
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+              "minLength": 36,
+              "maxLength": 36,
+              "x-42c-format": "o:uuid"
             },
             "name": "id",
             "in": "path",
