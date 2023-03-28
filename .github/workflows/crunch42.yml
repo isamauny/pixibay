@@ -35,6 +35,7 @@ on:
 env:
   PLATFORM_URL: https://demolabs.42crunch.cloud
   PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
+  TOKEN_ENV_VAR: ACCESS_TOKEN
 
 permissions:
   contents: read
@@ -84,18 +85,11 @@ jobs:
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
-          token=$(curl -k -d '{"user":"user-inbound@acme.com", "pass":"${{ secrets.USER_PASS }}"}' -X POST -H "Content-Type:application/json" ${{ vars.PIXI_TARGET_URL}}/user/login | jq -r '.token')
-          echo "::add-mask::$response"
-          pixi_token_encrypted=$(gpg --symmetric --batch --passphrase ${{ secrets.PGP_KEY }} --output - <(echo "$response") | base64 -w0)
-          echo "pixi_token_encrypted=$pixi_token_encrypted" >> $GITHUB_OUTPUT
-          echo "encrypted token= $pixi_token_encrypted"
-          echo ${{steps.get_pixi_token.outputs.pixi_token_encrypted}}
+          python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }}
       - name: upload_scan_config
         id: upload_scan_config
         run: | 
-          token=${{steps.get_pixi_token.outputs.pixi_token_encrypted}}
-          pixi_token_decrypted=$(gpg --decrypt --quiet --batch --passphrase ${{ secrets.PGP_KEY }} --output - <(echo "$token" | base64 --decode))      
-          python .42c/scanV1-launch.py ${{ github.repository }} ${{ github.ref_name }} ${{ secrets.API_TOKEN }} $pixi_token_decrypted ${{env.PLATFORM_URL}} 
+          python .42c/scanV1-launch.py ${{ github.repository }} ${{ github.ref_name }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}} 
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
@@ -103,7 +97,5 @@ jobs:
           method: POST
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
-          data: '{"token": "${{ steps.upload_scan_config.GITHUB_OUTPUT.SCANV2_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": ${{vars.SCAN_AGENT_V1}},"expirationTime": 600,"env": { "SCAN42C_host": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api","SCAN42C_user": "user-inbound@acme.com","SCAN42C_pass": "${{ secrets.USER_PASS }}"}}'
+          data: '{"token": "${{ steps.upload_scan_config.GITHUB_OUTPUT.SCANV2_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": ${{vars.SCAN_AGENT_V1}},"expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.GITHUB_OUTPUT.PIXI_TOKEN }}"'
       
-
-    
