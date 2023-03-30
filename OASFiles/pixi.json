@@ -790,7 +790,7 @@
                   "properties": {
                     "message": {
                       "type": "string",
-                      "maxLength": 150
+                      "maxLength": 100
                     }
                   },
                   "required": [
