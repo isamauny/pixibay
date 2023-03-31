@@ -52,13 +52,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 42crunch-static-api-testing
-        uses: docker://42crunch/github-api-security-audit:v3.5.0rc1
+        uses: 42Crunch/api-security-audit-action@master
         with:
           # Please create free account at https://platform.42crunch.com/register
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
           api-token: ${{ secrets.API_TOKEN }}
           platform-url: https://demolabs.42crunch.cloud
-          min-score: 50
           default-collection-name: Code-Scanning-Import
           # Upload results to Github code scanning
           upload-to-code-scanning: false
