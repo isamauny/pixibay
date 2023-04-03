@@ -23,6 +23,7 @@
       "description": "Operations available to anyone"
     }
   ],
+  "x-42c-no-authentication": true,
   "paths": {
     "/user/register": {
       "post": {
@@ -107,8 +108,7 @@
               }
             ]
           }
-        },
-        "security": []
+        }
       }
     }
   },
