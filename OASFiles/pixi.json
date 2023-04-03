@@ -1010,7 +1010,12 @@
             "x-42c-format": "o:email"
           },
           "pass": {
-            "type": "string"
+            "type": "string",
+            "format": "o:common:password",
+            "maxLength": 64,
+            "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$",
+            "minLength": 8,
+            "x-42c-format": "o:common:password"
           },
           "name": {
             "maxLength": 30,
