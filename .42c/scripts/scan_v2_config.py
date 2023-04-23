@@ -7,7 +7,8 @@ import requests
 import re
 import sys
 import time
-import subprocess
+#    import subprocess
+import os
 
 def testUUID(token):
     return re.match("^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$", token)
@@ -129,7 +130,7 @@ def main():
                         help="UUID of API to scan")  
     parser.add_argument('-n', "--config-name",
                         default="DefaultConfig",
-                        help="Scan configuration friendly name", required=True)
+                        help="Scan configuration friendly name", required=False)
     parser.add_argument('-f', "--config-filename",
                         help="Scan configuration filename", required=True)
     parser.add_argument('-p', '--platform', 
@@ -177,7 +178,6 @@ def main():
     # Uncomment this for integration with GitHub actions
     with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
         print(f'{"SCANV2_TOKEN"}={scan_token}', file=fh)
-    if not quiet: print(f"Scan Token: {scan_token}")
     if not quiet: print("[*] Done!")
 
 # -------------- Main Section ----------------------

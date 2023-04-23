@@ -57,7 +57,7 @@ jobs:
           # Please create free account at https://platform.42crunch.com/register
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
           api-token: ${{ secrets.API_TOKEN }}
-          platform-url: https://demolabs.42crunch.cloud
+          platform-url: ${{ env.PLATFORM_URL}}
           default-collection-name: Code-Scanning-Import
           # Upload results to Github code scanning
           upload-to-code-scanning: false
@@ -71,7 +71,6 @@ jobs:
           path: audit-action-report-${{ github.run_id }}.json
           if-no-files-found: error
 
-  
   # We use the output of the previous step to scan the APIs       
   run_42c_scan:
     runs-on: ubuntu-latest
@@ -88,12 +87,17 @@ jobs:
           login_response=$(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
-      - name: upload_scan_config
-        id: upload_scan_config
+      - name: upload_v1_scan_config
+        id: upload_v1_scan_config
         run: | 
-          scanconfig_response=$(python .42c/scanV1_launch.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
+          scanconfig_response=$(python .42c/scripts/scan_v1_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
           echo $scanconfig_response
           echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
+      - name: download_audit_report    
+        uses: actions/download-artifact@v3
+        with:
+          name: auditaction-report-${{ github.run_id }}
+          path: audit-action-report-${{ github.run_id }}.json
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
@@ -101,5 +105,4 @@ jobs:
           method: POST
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
-          data: '{"token": "${{ steps.upload_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
-      
+          data: '{"token": "${{ steps.upload_v1_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
