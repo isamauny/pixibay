@@ -15,6 +15,4 @@ audit:
       discovery:
         search:
           - OASFiles/pixi.json
-          - OASFiles/UserRegistration.json
-
 
