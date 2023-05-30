@@ -50,7 +50,12 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-
+      - name: get PR number
+        id: getprnumber
+        run: |
+          pr_id=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          echo "PR ID is:  $pr_id"
+          echo "PR_ID=$pr_id" >> $GITHUB_OUTPUT
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.5.0rc1
         with:
@@ -58,7 +63,7 @@ jobs:
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
           api-token: ${{ secrets.API_TOKEN }}
           platform-url: ${{ env.PLATFORM_URL}}
-          default-collection-name: Code-Scanning-Import
+          default-collection-name: Code-Scanning-${{ steps.getprnumber.outputs.PR_ID }}
           # Upload results to Github code scanning
           upload-to-code-scanning: false
           log-level: debug
@@ -81,10 +86,11 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+  
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
-          login_response=$(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
+          login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
       - name: upload_v1_scan_config
