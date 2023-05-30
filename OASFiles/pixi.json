@@ -61,16 +61,17 @@
                     "example": "foo@bar.com",
                     "minLength": 5,
                     "maxLength": 68,
-                    "x-42c-format": "o:email"
+                    "x-42c-format": "o:email",
+                    "pattern": "^[\\w\\-+.]+@((\\w\\-?)+\\.){1,4}[a-zA-Z0-9]{2,63}$"
                   },
                   "pass": {
                     "maxLength": 64,
                     "minLength": 8,
                     "type": "string",
-                    "format": "password",
+                    "format": "o:common:password",
                     "example": "mygood2!pass",
-                    "x-42c-sample": "hellopixi",
-                    "x-42c-format": "o:standard:password"
+                    "x-42c-format": "o:common:password",
+                    "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$"
                   }
                 }
               }
