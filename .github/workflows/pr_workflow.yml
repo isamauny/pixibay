@@ -21,13 +21,10 @@
 #
 # If you have any questions or need help contact https://support.42crunch.com
 
-name: "new-feature-workflow"
+name: "pr-workflow"
 
 # follow standard Code Scanning triggers
 on: 
-  workflow_dispatch:
-  push:
-    branches: [ main ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ main ]
@@ -86,11 +83,10 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-  
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
-          login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
+          login_response=$(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
       - name: upload_v1_scan_config
