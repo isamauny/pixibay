@@ -1,0 +1,105 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow locates REST API file contracts
+# (Swagger or OpenAPI format, v2 and v3, JSON and YAML)
+# and runs 300+ security checks on them using 42Crunch Security Audit technology.
+#
+# Documentation is located here: https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
+#
+# To use this workflow, you will need to complete the following setup steps.
+#
+# 1. Create a free 42Crunch account at https://platform.42crunch.com/register
+#
+# 2. Follow steps at https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
+#    to create an API Token on the 42Crunch platform
+#
+# 3. Add a secret in GitHub as explained in https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm,
+#    store the 42Crunch API Token in that secret, and supply the secret's name as api-token parameter in this workflow
+#
+# If you have any questions or need help contact https://support.42crunch.com
+
+name: "main-workflow"
+
+# follow standard Code Scanning triggers
+on: 
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+env:
+  PLATFORM_URL: https://demolabs.42crunch.cloud
+  PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
+  TOKEN_ENV_VAR: ACCESS_TOKEN
+
+permissions:
+  contents: read
+
+jobs:
+  run_42c_audit:
+    environment: 42Crunch
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: 42crunch-static-api-testing
+        uses: 42crunch/api-security-audit-action@v3.5.0rc1
+        with:
+          # Please create free account at https://platform.42crunch.com/register
+          # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
+          api-token: ${{ secrets.API_TOKEN }}
+          platform-url: ${{ env.PLATFORM_URL}}
+          default-collection-name: Code-Scanning--${{ github.base_ref }}
+          # Upload results to Github code scanning
+          upload-to-code-scanning: false
+          log-level: debug
+          json-report: audit-action-report-${{ github.run_id }}
+      - name: save-audit-report
+        if: always()        
+        uses: actions/upload-artifact@v3
+        with:
+          name: auditaction-report-${{ github.run_id }}
+          path: audit-action-report-${{ github.run_id }}.json
+          if-no-files-found: error
+
+  # We use the output of the previous step to scan the APIs       
+  run_42c_scan:
+    runs-on: ubuntu-latest
+    needs: run_42c_audit
+    environment: 42Crunch
+    permissions:
+      contents: read # for actions/checkout to fetch code
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: get_pixi_token
+        id: get_pixi_token
+        run: | 
+          login_response=$(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
+          echo $login_response
+          echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
+      - name: upload_v1_scan_config
+        id: upload_v1_scan_config
+        run: | 
+          scanconfig_response=$(python .42c/scripts/scan_v1_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
+          echo $scanconfig_response
+          echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
+      - name: download_audit_report    
+        uses: actions/download-artifact@v3
+        with:
+          name: auditaction-report-${{ github.run_id }}
+          path: audit-action-report-${{ github.run_id }}.json
+      - name: 42crunch-dynamic-api-testing
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ vars.SCAND_MANAGER_URL }}
+          method: POST
+          contentType: "application/json"
+          customHeaders: '{"Accept": "application/json"}'
+          data: '{"token": "${{ steps.upload_v1_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
