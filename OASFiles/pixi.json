@@ -61,8 +61,7 @@
                     "example": "foo@bar.com",
                     "minLength": 5,
                     "maxLength": 68,
-                    "x-42c-format": "o:email",
-                    "pattern": "^[\\w\\-+.]+@((\\w\\-?)+\\.){1,4}[a-zA-Z0-9]{2,63}$"
+                    "x-42c-format": "o:email"
                   },
                   "pass": {
                     "maxLength": 64,
