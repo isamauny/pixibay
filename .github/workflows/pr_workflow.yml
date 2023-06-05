@@ -86,7 +86,7 @@ jobs:
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
-          login_response=$(python .42c/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
+          login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
       - name: upload_v1_scan_config
