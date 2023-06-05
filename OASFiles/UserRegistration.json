@@ -296,7 +296,7 @@
         "type": "object",
         "additionalProperties": false,
         "example": {
-          "user": "foo@test.com",
+          "user": "githubapp1@test.com",
           "pass": "mygood2!pass",
           "name": "PixiUser",
           "is_admin": false,
