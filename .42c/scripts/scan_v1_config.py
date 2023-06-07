@@ -155,7 +155,7 @@ def createSpecs(api_uuid):
 
 # -------------- Main Section ----------------------
 
-API_ENDPOINT = "https://demolabs.42crunch.cloud"
+API_ENDPOINT = "https://platform.42crunch.com"
 
 if len(sys.argv) != 6:
     raise Exception("Bad number or args")
