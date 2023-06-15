@@ -31,7 +31,7 @@ on:
 
 env:
   PLATFORM_URL: https://demolabs.42crunch.cloud
-  PLATFORM_SERVICE_ENDPOINT: services.42crunch.com:8001
+  PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
   TOKEN_ENV_VAR: ACCESS_TOKEN
 
 permissions:
