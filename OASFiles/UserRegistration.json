@@ -70,7 +70,7 @@
                       "minLength": 36,
                       "maxLength": 36,
                       "x-42c-format": "o:uuid",
-                      "example": "a83a29f5-0d63-46f2-8f2e-44c2f1d2e07e"
+                      "example": "a84a29f5-0d63-46f2-8f2e-44c2f1d2e07e"
                     }
                   }
                 }
