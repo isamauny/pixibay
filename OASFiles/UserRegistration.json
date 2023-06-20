@@ -305,7 +305,7 @@
           "user": {
             "type": "string",
             "format": "email",
-            "example": "foo@baracme.com",
+            "example": "foo@barasasacme.com",
             "pattern": "^[\\w\\-+.]+@((\\w\\-?)+\\.){1,4}[a-zA-Z0-9]{2,63}$",
             "minLength": 5,
             "maxLength": 68,
