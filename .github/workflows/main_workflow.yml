@@ -87,7 +87,7 @@ jobs:
       - name: setenv
         id: setenv
         run: |
-            response = $(python .42c/scripts/set_env.py)
+            response = $(python .42c/scripts/setenv.py)
       - name: printenv
         id: printenv
         run: |
