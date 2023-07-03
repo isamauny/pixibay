@@ -6,7 +6,7 @@ def set_env(name, value):
         print(f'{name}={value}', file=fh)
 
 def set_output(name, value):
-    with open(os.environ['GITHUB_OUT'], 'a') as fh:
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
         print(f'{name}={value}', file=fh)
 
 set_env ("token1", "env-value1")
