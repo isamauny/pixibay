@@ -84,6 +84,15 @@ jobs:
           login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
+      - name: setenv
+        id: setenv
+        run: |
+            response = $(python .42c/scripts/set_env.py)
+      - name: printenv
+        id: printenv
+        run: |
+            echo "${{ env.token1 }}"
+            echo "${{ steps.setenv.outputs.token1 }}"
       - name: upload_v1_scan_config
         id: upload_v1_scan_config
         run: | 
