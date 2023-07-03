@@ -7,7 +7,7 @@ import requests
 import re
 import sys
 import time
-#    import subprocess
+#    import subprocess - Uncomment for AzureDevOps Integration
 import os
 
 def testUUID(token):
@@ -34,7 +34,7 @@ def update_config(token: str, name: str, aid: str, scanconf_filename: str):
     finally:
         contents.close()
 
-    payload = {"name": name, "scanConfiguration": b64encoded_scanconf }
+    payload = {"name": name, "file": b64encoded_scanconf }
     response = requests.post(url, data=json.dumps(payload), headers=headers) 
 
     if response.status_code != 200:
@@ -61,7 +61,7 @@ def update_config(token: str, name: str, aid: str, scanconf_filename: str):
             else:
                 loop_counter+=1
                 if debug: print(f"TaskID retrieval attempt #{loop_counter}")
-                if response.json()['scanConfigurationTaskId'] == taskId:
+                if response.json()['taskId'] == taskId:
                     found_config = True
                     break
                 if loop_counter == 3:
@@ -70,15 +70,15 @@ def update_config(token: str, name: str, aid: str, scanconf_filename: str):
             time.sleep(.5)
 
         # If we get here, the conf report is for the conf we just updated.
-        is_config_valid = response.json()['scanConfigurationValid']
-        scan_token = response.json()['scanConfigurationToken']
+        is_config_valid = response.json()['valid']
+        scan_token = response.json()['token']
         if is_config_valid:
             if not quiet: print("[*] Configuration is valid and can be used")
         else:
             if not quiet: print("[*] Configuration is not valid - Printing report")
             #Load report and base64 decode it.
             report_filename = f"scanconf_analysis_report_{name}.json"
-            report = response.json()['scanConfigurationReport']
+            report = response.json()['reportFile']
             contents = json.loads(base64.decodebytes(report.encode("utf-8")))
             try:
                 with open (report_filename, 'w') as outfile:
@@ -109,9 +109,9 @@ def retrieve_config_id(token: str, name: str, aid: str):
             loop_counter+=1
             if debug: print(f"ConfigID retrieval attempt #{loop_counter}")
             for c in response.json()['list']:
-                if debug: print(f"Config Response: {c['scanConfigurationName']} is {c['scanConfigurationId']}")
-                if c['scanConfigurationName'] == name:
-                    scan_conf_id = c['scanConfigurationId']
+                if debug: print(f"Config Response: {c['configuration']['name']} is {c['configuration']['id']}")
+                if c['configuration']['name'] == name:
+                    scan_conf_id = c['configuration']['id']
                     found_config_id = True
                     break
                 if loop_counter == 10:
@@ -176,8 +176,9 @@ def main():
     # Uncomment this for integration with Azure DevOps
     #subprocess.Popen(["echo", "##vso[task.setvariable variable=SCANV2_TOKEN;isoutput=true]{0}".format(scan_token)])
     # Uncomment this for integration with GitHub actions
-    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-        print(f'{"SCANV2_TOKEN"}={scan_token}', file=fh)
+    #with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+    #    print(f'{"SCANV2_TOKEN"}={scan_token}', file=fh)
+    print (scan_token)
     if not quiet: print("[*] Done!")
 
 # -------------- Main Section ----------------------
