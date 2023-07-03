@@ -45,6 +45,8 @@ jobs:
       security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
       - name: setenv
         id: setenv
         run: |
@@ -53,9 +55,7 @@ jobs:
         id: printenv
         run: |
             echo "${{ env.token1 }}"
-            echo "${{ steps.setenv.outputs.token1 }}"
-      - name: checkout repo
-        uses: actions/checkout@v3
+            echo "${{ steps.setenv.outputs.token1 }}"  
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.5.0rc1
         with:
