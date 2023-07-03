@@ -45,6 +45,15 @@ jobs:
       security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
     runs-on: ubuntu-latest
     steps:
+      - name: setenv
+        id: setenv
+        run: |
+          response=$(python .42c/scripts/setenv.py)
+      - name: printenv
+        id: printenv
+        run: |
+            echo "${{ env.token1 }}"
+            echo "${{ steps.setenv.outputs.token1 }}"
       - name: checkout repo
         uses: actions/checkout@v3
       - name: 42crunch-static-api-testing
@@ -77,22 +86,12 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-  
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
           login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
-      - name: setenv
-        id: setenv
-        run: |
-            response = $(python .42c/scripts/setenv.py)
-      - name: printenv
-        id: printenv
-        run: |
-            echo "${{ env.token1 }}"
-            echo "${{ steps.setenv.outputs.token1 }}"
       - name: upload_v1_scan_config
         id: upload_v1_scan_config
         run: | 
