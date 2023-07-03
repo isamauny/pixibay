@@ -47,12 +47,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-      - name: get PR number
-        id: getprnumber
-        run: |
-          pr_id=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "PR ID is:  $pr_id"
-          echo "PR_ID=$pr_id" >> $GITHUB_OUTPUT
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.5.0rc1
         with:
@@ -60,7 +54,7 @@ jobs:
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
           api-token: ${{ secrets.API_TOKEN }}
           platform-url: ${{ env.PLATFORM_URL}}
-          default-collection-name: Code-Scanning--${{ github.base_ref }}
+          default-collection-name: Code-Scanning--${{ github.ref_name }}
           # Upload results to Github code scanning
           upload-to-code-scanning: false
           log-level: debug
@@ -96,11 +90,12 @@ jobs:
           scanconfig_response=$(python .42c/scripts/scan_v1_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
           echo $scanconfig_response
           echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
-      - name: download_audit_report    
-        uses: actions/download-artifact@v3
-        with:
-          name: auditaction-report-${{ github.run_id }}
-          path: audit-action-report-${{ github.run_id }}.json
+      - name: upload_v2_scan_config
+        id: upload_v2_scan_config
+        run: | 
+            scanconfig_response=$(python .42c/scripts/scan_v2_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
+            echo $scanconfig_response
+            echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
