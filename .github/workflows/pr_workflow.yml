@@ -53,14 +53,6 @@ jobs:
           pr_id=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
           echo "PR ID is:  $pr_id"
           echo "PR_ID=$pr_id" >> $GITHUB_OUTPUT
-      - name: setenv
-        id: setenv
-        run: |
-          response = $(python .42c/scripts/set_env.py)
-      - name: printenv
-        id: printenv
-        run: |
-          echo "${{ env.token1 }}"
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.5.0rc1
         with:
