@@ -1,6 +1,6 @@
 audit:
   branches:
-    main: 
+    main:
       discovery:
         search:
           - OASFiles/*.json
@@ -14,6 +14,6 @@ audit:
     main:
       discovery:
         search:
-          - OASFiles/pixi.json
+          - openapi.json
 
 
