@@ -37,8 +37,8 @@ def main():
                         help="PixiApp Password", required=True)
     parser.add_argument('-t', '--target', 
                         required=False, 
-                        default='https://photo-demo.westeurope.cloudapp.azure.com/version1/api', 
-                        help="Default is https://photo-demo.westeurope.cloudapp.azure.com/version1/api",
+                        default='https://photo-demo.westeurope.cloudapp.azure.com/api', 
+                        help="Default is https://photo-demo.westeurope.cloudapp.azure.com/api",
                         type=str)
     parser.add_argument('-q', "--quiet",
                         default=False,
