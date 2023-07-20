@@ -23,10 +23,11 @@
       "description": "Operations available to anyone"
     }
   ],
-  "security": [],
+  
   "paths": {
     "/user/register": {
       "post": {
+        "security": [],
         "tags": [
           "anyone"
         ],
