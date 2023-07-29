@@ -152,6 +152,9 @@ def createSpecs(api_uuid):
     
     return conf
 
+def set_output(name, value):
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        print(f'{name}={value}', file=fh)
 
 # -------------- Main Section ----------------------
 
@@ -181,6 +184,5 @@ for uuid in apis_uuids:
         _, token = retrieveScanConf(uuid) # get token
 
 #send to stdout
-with open(os.environ['$GITHUB_OUTPUT'], 'a') as fh:
-            print(f'{"SCANV1_TOKEN_FROM_SCRIPT"}={token}', file=fh)
+set_output ("SCANV1_TOKEN_FROM-SCRIPT", token)
 print(token)
