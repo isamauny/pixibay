@@ -155,7 +155,7 @@ def createSpecs(api_uuid):
 
 # -------------- Main Section ----------------------
 
-API_ENDPOINT = "https://demolabs.42crunch.cloud"
+API_ENDPOINT = "https://platform.qa.42crunch.com"
 
 if len(sys.argv) != 6:
     raise Exception("Bad number or args")
@@ -181,4 +181,6 @@ for uuid in apis_uuids:
         _, token = retrieveScanConf(uuid) # get token
 
 #send to stdout
+with open(os.environ['$GITHUB_OUTPUT'], 'a') as fh:
+            print(f'{"SCANV1_TOKEN_FROM_SCRIPT"}={token}', file=fh)
 print(token)
