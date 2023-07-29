@@ -30,8 +30,9 @@ on:
     branches: [ main ]
 
 env:
-  PLATFORM_URL: https://demolabs.42crunch.cloud
-  PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
+  #PLATFORM_URL: https://demolabs.42crunch.cloud
+  PLATFORM_URL: https://platform.qa.42crunch.com
+  PLATFORM_SERVICE_ENDPOINT: services.qa.42crunch.cloud:8001
   TOKEN_ENV_VAR: ACCESS_TOKEN
 
 permissions:
