@@ -1,0 +1,85 @@
+{
+    "version": "2.0.0",
+    "runtimeConfiguration": {
+      "logLevel": "debug",
+      "logDestination": "stdout+platform",
+      "maxLogFileSize": 2147483648,
+      "headerNameRequestId": "x-scan-request-id",
+      "headerNameScenarioId": "x-scan-scenario-id",
+      "flowrate": 10,
+      "timeout": 30,
+      "tlsInsecureSkipVerify": true,
+      "followRedirection": true,
+      "happyPathRetry": 1,
+      "happyPathOnly": false,
+      "happyPathConformanceStrict": false,
+      "maxScanTime": 3600,
+      "memoryLimit": 2147483648,
+      "memoryTimeSpan": 10,
+      "indexed": false,
+      "prettify": false,
+      "maxBodySizeScan": 10485760,
+      "maxHttpResponseSizeHappyPathReport": 0,
+      "maxBodySizeHappyPathReport": 8092,
+      "maxHttpResponseSizeTestReport": 0,
+      "maxBodySizeTestReport": 8092,
+      "issuesOnly": true,
+      "maxIssues": 10000,
+      "maxReportSize": 104857600
+    },
+    "playbook": {
+      "paths": {
+        "/user/register": {
+          "post": {
+            "happyPaths": [
+              {
+                "key": "happy.path.success",
+                "requests": [
+                  {
+                    "$ref": "#/requests/register"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    "environment": {
+      "host": "env_with_default('SCAN42C_HOST','https://photo-demo.westeurope.cloudapp.azure.com/version1/api')"
+    },
+    "requests": {
+      "register": {
+        "request": {
+          "type": "42c",
+          "requestDetails": {
+            "host": "{{host}}",
+            "path": "/user/register",
+            "method": "post",
+            "pathParameters": {},
+            "queryParameters": {},
+            "headerParameters": {
+              "Content-Type": "application/json"
+            },
+            "cookieParameters": {},
+            "requestBody": {
+              "mode": "json",
+              "json": {
+                "account_balance": 300,
+                "is_admin": false,
+                "name": "PixiUser",
+                "pass": "mygood2!pass",
+                "user": "githubapp1@test.com"
+              }
+            }
+          }
+        },
+        "responseAnalysisBehavior": {
+          "httpStatusExpected": [
+            "200",
+            "202"
+          ]
+        }
+      }
+    }
+  }

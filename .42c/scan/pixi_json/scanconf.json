@@ -277,9 +277,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": []
+                    ]
                 }
             },
             "/user/register": {
@@ -296,9 +294,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": []
+                    ]
                 }
             },
             "/admin/users/search": {
@@ -312,9 +308,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": []
+                    ]
                 }
             },
             "/user/edit_info": {
@@ -325,16 +319,6 @@
                             "requests": [
                                 {
                                     "$ref": "#/requests/updateUserInfo"
-                                }
-                            ]
-                        }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": [
-                        {
-                            "requests": [
-                                {
-                                    "$ref": "#/requests/makeUserAdmin"
                                 }
                             ]
                         }
@@ -352,9 +336,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": []
+                    ]
                 }
             },
             "/admin/all_users": {
@@ -374,9 +356,7 @@
                                 }
                             ]
                         }
-                    ],
-                    "conformanceRequests": [],
-                    "customRequests": []
+                    ]
                 }
             }
         }
