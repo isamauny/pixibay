@@ -111,7 +111,7 @@ jobs:
         uses: 42crunch/cicd-github-actions/scan@master
         with:
           api-token: ${{ secrets.API_TOKEN }}
-          platform-url: https://demolabs.42crunch.com
+          platform-url: ${{ env.PLATFORM_URL}}
           audit-report-path: audit-action-report-${{ github.run_id }}.json
           convert-to-sarif: scan-report-${{ github.run_id }}.sarif
           upload-sarif: false
