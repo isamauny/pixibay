@@ -60,7 +60,7 @@ jobs:
           platform-url: ${{ env.PLATFORM_URL}}
           default-collection-name: Code-Scanning-${{ steps.getprnumber.outputs.PR_ID }}
           # Upload results to Github code scanning
-          upload-to-code-scanning: false
+          upload-to-code-scanning: true
           log-level: debug
           json-report: audit-action-report-${{ github.run_id }}
       - name: save-audit-report
@@ -114,5 +114,5 @@ jobs:
           platform-url: ${{ env.PLATFORM_URL}}
           audit-report-path: audit-action-report-${{ github.run_id }}.json
           convert-to-sarif: scan-report-${{ github.run_id }}.sarif
-          upload-sarif: false
+          upload-sarif: true
           check-sqg: false
