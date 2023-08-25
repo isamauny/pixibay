@@ -108,5 +108,13 @@ jobs:
           platform-url: ${{ env.PLATFORM_URL}}
           audit-report-path: audit-action-report-${{ github.run_id }}.json
           convert-to-sarif: scan-report-${{ github.run_id }}.sarif
-          upload-sarif: true
+          upload-sarif: false
           check-sqg: false
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: scan-report-${{ github.run_id }}.sarif
+          # Optional category for the results
+          # Used to differentiate multiple results for one commit
+          category: 42Crunch REST API Dynamic Security Testing
