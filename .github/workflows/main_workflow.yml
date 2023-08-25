@@ -47,17 +47,8 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-      - name: setenv
-        id: setenv
-        run: |
-          response=$(python .42c/scripts/setenv.py)
-      - name: printenv
-        id: printenv
-        run: |
-            echo "${{ env.token1 }}"
-            echo "${{ steps.setenv.outputs.token1 }}"  
       - name: 42crunch-static-api-testing
-        uses: 42crunch/api-security-audit-action@v3.5.0rc1
+        uses: 42crunch/api-security-audit-action@v3.7.0
         with:
           # Please create free account at https://platform.42crunch.com/register
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
@@ -65,7 +56,7 @@ jobs:
           platform-url: ${{ env.PLATFORM_URL}}
           default-collection-name: Code-Scanning--${{ github.ref_name }}
           # Upload results to Github code scanning
-          upload-to-code-scanning: false
+          upload-to-code-scanning: true
           log-level: debug
           json-report: audit-action-report-${{ github.run_id }}
       - name: save-audit-report
@@ -86,6 +77,10 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
+      - name: download_audit_report    
+        uses: actions/download-artifact@v3
+        with:
+          name: auditaction-report-${{ github.run_id }}  
       - name: get_pixi_token
         id: get_pixi_token
         run: | 
@@ -98,12 +93,6 @@ jobs:
           scanconfig_response=$(python .42c/scripts/scan_v1_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
           echo $scanconfig_response
           echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
-      - name: upload_v2_scan_config
-        id: upload_v2_scan_config
-        run: | 
-            scanconfig_response=$(python .42c/scripts/scan_v2_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
-            echo $scanconfig_response
-            echo "SCANV1_TOKEN=$scanconfig_response" >> $GITHUB_OUTPUT
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
@@ -111,4 +100,13 @@ jobs:
           method: POST
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
-          data: '{"token": "${{ steps.upload_v1_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
+          data: '{"token": "${{ steps.upload_v1_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}-${{ github.run_attempt }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
+      - name: upload scan results
+        uses: 42crunch/cicd-github-actions/scan@master
+        with:
+          api-token: ${{ secrets.API_TOKEN }}
+          platform-url: ${{ env.PLATFORM_URL}}
+          audit-report-path: audit-action-report-${{ github.run_id }}.json
+          convert-to-sarif: scan-report-${{ github.run_id }}.sarif
+          upload-sarif: true
+          check-sqg: false
