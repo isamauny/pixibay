@@ -97,7 +97,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: auditaction-report-${{ github.run_id }}
-          path: audit-action-report-${{ github.run_id }}.json
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: 42crunch-dynamic-api-testing
         uses: fjogeleit/http-request-action@v1
         with:
@@ -110,6 +111,7 @@ jobs:
         uses: 42crunch/cicd-github-actions/scan@master
         with:
           api-token: ${{ secrets.API_TOKEN }}
+          platform-url: https://demolabs.42crunch.com
           audit-report-path: audit-action-report-${{ github.run_id }}.json
           convert-to-sarif: scan-report-${{ github.run_id }}.sarif
           upload-sarif: false
