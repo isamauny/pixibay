@@ -1,0 +1,2941 @@
+{
+    "version": "2.1.0",
+    "$schema": "http://json.schemastore.org/sarif-2.1.0-rtm.4",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "42Crunch API Conformance Scan",
+                    "informationUri": "https://42crunch.com/",
+                    "rules": [
+                        {
+                            "id": "path-item-method-not-allowed-scan",
+                            "shortDescription": {
+                                "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "partial-security-accepted",
+                            "shortDescription": {
+                                "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "parameter-header-contenttype-wrong-scan",
+                            "shortDescription": {
+                                "text": "The header \u2018Content-Type\u2019 has a value \u2018application/random+content+type\u2019 and it is not consistent with the body which has a content type \u2018application/json\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-bool-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-string-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type string instead of the type \u2018object\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-integer-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-number-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type number instead of the type \u2018object\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-array-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type array instead of the type \u2018object\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-object-scan",
+                            "shortDescription": {
+                                "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-pattern-scan",
+                            "shortDescription": {
+                                "text": "The generated value does not follow the property pattern for strings"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-maxlength-scan",
+                            "shortDescription": {
+                                "text": "The generated value does not follow the property maxLength for strings"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-required-scan",
+                            "shortDescription": {
+                                "text": "The required property \u2018email\u2019 is missing in the generated object"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-minlength-scan",
+                            "shortDescription": {
+                                "text": "The generated value does not follow the property minLength for strings"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-minimum-scan",
+                            "shortDescription": {
+                                "text": "The generated value does not follow the property minimum for integers and numbers"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        },
+                        {
+                            "id": "schema-maximum-scan",
+                            "shortDescription": {
+                                "text": "The generated value does not follow the property maximum for integers and numbers"
+                            },
+                            "helpUri": "https://support.42crunch.com",
+                            "help": {
+                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                            },
+                            "properties": {
+                                "owapIssue": "No OWASP issues found",
+                                "category": "Other"
+                            }
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 499,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 563,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 421,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "partial-security-accepted",
+                    "message": {
+                        "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 629,
+                                    "startColumn": 14
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 2
+                },
+                {
+                    "level": "none",
+                    "ruleId": "parameter-header-contenttype-wrong-scan",
+                    "message": {
+                        "text": "The header \u2018Content-Type\u2019 has a value \u2018application/random+content+type\u2019 and it is not consistent with the body which has a content type \u2018application/json\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 629,
+                                    "startColumn": 14
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 3
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-string-scan",
+                    "message": {
+                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 5
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "none",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-maxlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property maxLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 11
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 628,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 747,
+                                    "startColumn": 21
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "partial-security-accepted",
+                    "message": {
+                        "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 352,
+                                    "startColumn": 13
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 2
+                },
+                {
+                    "level": "error",
+                    "ruleId": "parameter-header-contenttype-wrong-scan",
+                    "message": {
+                        "text": "The header \u2018Content-Type\u2019 has a value \u2018application/random+content+type\u2019 and it is not consistent with the body which has a content type \u2018application/json\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 352,
+                                    "startColumn": 13
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 3
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-string-scan",
+                    "message": {
+                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 5
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-required-scan",
+                    "message": {
+                        "text": "The required property \u2018email\u2019 is missing in the generated object"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 12
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-required-scan",
+                    "message": {
+                        "text": "The required property \u2018name\u2019 is missing in the generated object"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 12
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-minlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property minLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 13
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-maxlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property maxLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 11
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-minlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property minLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 13
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-maxlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property maxLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 969,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 11
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018number\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-string-scan",
+                    "message": {
+                        "text": "The generated value is of the type string instead of the type \u2018number\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 5
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018number\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018number\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-minimum-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property minimum for integers and numbers"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 14
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-maximum-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property maximum for integers and numbers"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 975,
+                                    "startColumn": 29
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 15
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 351,
+                                    "startColumn": 23
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "partial-security-accepted",
+                    "message": {
+                        "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 271,
+                                    "startColumn": 13
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 2
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 270,
+                                    "startColumn": 18
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 38,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "partial-security-accepted",
+                    "message": {
+                        "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 700,
+                                    "startColumn": 13
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 2
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018post\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 699,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018get\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018head\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "error",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018options\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018patch\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018put\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                },
+                {
+                    "level": "none",
+                    "ruleId": "path-item-method-not-allowed-scan",
+                    "message": {
+                        "text": "The request is generated with the verb \u2018trace\u2019 that is not defined in the OpenAPI definition of the API"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 178,
+                                    "startColumn": 22
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 1
+                }
+            ],
+            "artifacts": [
+                {
+                    "location": {
+                        "uri": "OASFiles/pixi.json"
+                    }
+                }
+            ]
+        }
+    ]
+}
