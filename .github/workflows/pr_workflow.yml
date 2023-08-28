@@ -127,5 +127,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: 42Crunch_ScanReport_${{ github.run_id }}
-          path: 42Crunch_ScanReport_${{ github.run_id }}.SARIF
+          path: scan-report-${{ github.run_id }}.sarif
           if-no-files-found: error
