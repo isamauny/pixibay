@@ -21,7 +21,7 @@
 #
 # If you have any questions or need help contact https://support.42crunch.com
 
-name: "pr-workflow"
+name: "pr-workflow-simplified"
 
 # follow standard Code Scanning triggers
 on: 
@@ -44,18 +44,12 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
-      - name: get PR number
-        id: getprnumber
-        run: |
-          pr_id=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo "PR ID is:  $pr_id"
-          echo "PR_ID=$pr_id" >> $GITHUB_OUTPUT
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.7.0
         with:
           api-token: ${{ secrets.API_TOKEN_PRFLOW }}
           platform-url: ${{ env.PLATFORM_URL}}
-          default-collection-name: Code-Scanning-${{ steps.getprnumber.outputs.PR_ID }}
+          default-collection-name: Code-Scanning-MainBranch
           # Upload results to Github code scanning
           upload-to-code-scanning: true
           log-level: debug
@@ -83,6 +77,7 @@ jobs:
     environment: 42Crunch
     permissions:
       contents: read # for actions/checkout to fetch code
+      security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
