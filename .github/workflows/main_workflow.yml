@@ -48,7 +48,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: 42crunch-static-api-testing
-        uses: 42crunch/api-security-audit-action@v3.7.0
+        uses: 42crunch/api-security-audit-action@v3.8.0
         with:
           # Please create free account at https://platform.42crunch.com/register
           # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
