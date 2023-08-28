@@ -76,8 +76,9 @@ jobs:
     needs: run_42c_audit
     environment: 42Crunch
     permissions:
-      contents: read # for actions/checkout to fetch code
-      security-events: write # for 42Crunch/api-security-audit-action to upload results to Github Code Scanning
+      contents: read
+      actions: read
+      security-events: write
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
