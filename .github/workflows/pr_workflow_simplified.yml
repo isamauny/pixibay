@@ -90,3 +90,10 @@ jobs:
           # Optional category for the results
           # Used to differentiate multiple results for one commit
           category: 42Crunch Dynamic Testing
+      - name: save-scan-sarif-file
+        if: always()        
+        uses: actions/upload-artifact@v3
+        with:
+          name: 42Crunch_ScanReport_${{ github.run_id }}
+          path: .42c/scan/scan-report.sarif
+          if-no-files-found: error
