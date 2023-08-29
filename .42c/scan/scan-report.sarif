@@ -11,211 +11,316 @@
                         {
                             "id": "path-item-method-not-allowed-scan",
                             "shortDescription": {
-                                "text": "The request is generated with the verb \u2018delete\u2019 that is not defined in the OpenAPI definition of the API"
+                                "text": "Scan sends a request using a verb that is not defined for the path in the OpenAPI definition."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request using an undefined verb"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "2"
                             }
                         },
                         {
                             "id": "partial-security-accepted",
                             "shortDescription": {
-                                "text": "The request is generated with the missing security requirements API key in header with name x-access-token"
+                                "text": "TODO"
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "TODO"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "2"
                             }
                         },
                         {
                             "id": "parameter-header-contenttype-wrong-scan",
                             "shortDescription": {
-                                "text": "The header \u2018Content-Type\u2019 has a value \u2018application/random+content+type\u2019 and it is not consistent with the body which has a content type \u2018application/json\u2019"
+                                "text": "Scan sends a request where the request body does not match the\u2018Content-Type\u2019 specified in the header."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request with wrong content type"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
-                            }
-                        },
-                        {
-                            "id": "schema-type-wrong-bool-scan",
-                            "shortDescription": {
-                                "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
-                            },
-                            "helpUri": "https://support.42crunch.com",
-                            "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
-                            },
-                            "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
-                            }
-                        },
-                        {
-                            "id": "schema-type-wrong-string-scan",
-                            "shortDescription": {
-                                "text": "The generated value is of the type string instead of the type \u2018object\u2019"
-                            },
-                            "helpUri": "https://support.42crunch.com",
-                            "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
-                            },
-                            "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "2"
                             }
                         },
                         {
                             "id": "schema-type-wrong-integer-scan",
                             "shortDescription": {
-                                "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
+                                "text": "Scan sends a request containing an integer value instead of the type that the OpenAPI definition expects."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing an integer value instead of the expected type"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "8"
                             }
                         },
                         {
                             "id": "schema-type-wrong-number-scan",
                             "shortDescription": {
-                                "text": "The generated value is of the type number instead of the type \u2018object\u2019"
+                                "text": "Scan sends a request containing a number value instead of the type that the OpenAPI definition expects."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a number value instead of the expected type"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "8"
                             }
                         },
                         {
                             "id": "schema-type-wrong-array-scan",
                             "shortDescription": {
-                                "text": "The generated value is of the type array instead of the type \u2018object\u2019"
+                                "text": "Scan sends a request containing an array instead of the value type that the OpenAPI definition expects."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing an array instead of the expected type"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "2"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-bool-scan",
+                            "shortDescription": {
+                                "text": "Scan sends a request containing a Boolean value instead of the type that the OpenAPI definition expects."
+                            },
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
+                            "help": {
+                                "text": "Scan sends a request containing a Boolean value instead of the expected type"
+                            },
+                            "properties": {
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "8"
+                            }
+                        },
+                        {
+                            "id": "schema-type-wrong-string-scan",
+                            "shortDescription": {
+                                "text": "Scan sends a request containing a string value instead of the type that the OpenAPI definition expects."
+                            },
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
+                            "help": {
+                                "text": "Scan sends a request containing a string value instead of the expected type"
+                            },
+                            "properties": {
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "8"
                             }
                         },
                         {
                             "id": "schema-type-wrong-object-scan",
                             "shortDescription": {
-                                "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                                "text": "Scan sends a request containing an object instead of the value type that the OpenAPI definition expects."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing an object instead of the expected type"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "6"
                             }
                         },
                         {
                             "id": "schema-pattern-scan",
                             "shortDescription": {
-                                "text": "The generated value does not follow the property pattern for strings"
+                                "text": "Scan sends a request containing a string value that does not match the pattern defined for it."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a string value with wrong pattern"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "9.5"
                             }
                         },
                         {
                             "id": "schema-maxlength-scan",
                             "shortDescription": {
-                                "text": "The generated value does not follow the property maxLength for strings"
+                                "text": "Scan sends a request containing a string value that is longer than the set \u2018maxLength\u2019."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a string value that is too long"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "9.5"
                             }
                         },
                         {
                             "id": "schema-required-scan",
                             "shortDescription": {
-                                "text": "The required property \u2018email\u2019 is missing in the generated object"
+                                "text": "Scan sends a request that is missing a property defined as \u2018required\u2019."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request that is missing a required property"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "9.5"
                             }
                         },
                         {
                             "id": "schema-minlength-scan",
                             "shortDescription": {
-                                "text": "The generated value does not follow the property minLength for strings"
+                                "text": "Scan sends a request containing a string value that is shorter than the set \u2018minLength\u2019."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a string value that is too short"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "8"
                             }
                         },
                         {
                             "id": "schema-minimum-scan",
                             "shortDescription": {
-                                "text": "The generated value does not follow the property minimum for integers and numbers"
+                                "text": "Scan sends a request containing an integer or number value that is smaller than the defined minimum for it."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a numeric value under the minimum"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "9.5"
                             }
                         },
                         {
                             "id": "schema-maximum-scan",
                             "shortDescription": {
-                                "text": "The generated value does not follow the property maximum for integers and numbers"
+                                "text": "Scan sends a request containing an integer or number value that exceeds the defined maximum for it."
                             },
-                            "helpUri": "https://support.42crunch.com",
+                            "helpUri": "https://docs.42crunch.com/latest/content/concepts/api_contract_conformance_scan.htm",
                             "help": {
-                                "text": "Owasp issue: None: No OWASP issues found                                    \nDetails: This is a sample entry for scan issue help"
+                                "text": "Scan sends a request containing a numeric value overflowing maximum"
                             },
                             "properties": {
-                                "owapIssue": "No OWASP issues found",
-                                "category": "Other"
+                                "owasp-id": "None",
+                                "owasp-issue": "No OWASP issues found",
+                                "category": "API Security",
+                                "tags": [
+                                    "security",
+                                    "42crunch",
+                                    "API"
+                                ],
+                                "security-severity": "9.5"
                             }
                         }
                     ]
@@ -840,50 +945,6 @@
                 },
                 {
                     "level": "error",
-                    "ruleId": "schema-type-wrong-bool-scan",
-                    "message": {
-                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 671,
-                                    "startColumn": 24
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 4
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-string-scan",
-                    "message": {
-                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 671,
-                                    "startColumn": 24
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 5
-                },
-                {
-                    "level": "error",
                     "ruleId": "schema-type-wrong-integer-scan",
                     "message": {
                         "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
@@ -902,7 +963,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 6
+                    "ruleIndex": 4
                 },
                 {
                     "level": "error",
@@ -924,7 +985,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 7
+                    "ruleIndex": 5
                 },
                 {
                     "level": "none",
@@ -946,7 +1007,227 @@
                             }
                         }
                     ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-string-scan",
+                    "message": {
+                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 671,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
                     "ruleIndex": 8
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 5
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "warning",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 675,
+                                    "startColumn": 30
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 681,
+                                    "startColumn": 27
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
                 },
                 {
                     "level": "error",
@@ -968,7 +1249,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 7
+                    "ruleIndex": 5
                 },
                 {
                     "level": "error",
@@ -990,7 +1271,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 8
+                    "ruleIndex": 6
                 },
                 {
                     "level": "error",
@@ -1013,50 +1294,6 @@
                         }
                     ],
                     "ruleIndex": 9
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-bool-scan",
-                    "message": {
-                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 681,
-                                    "startColumn": 27
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 4
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-integer-scan",
-                    "message": {
-                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 681,
-                                    "startColumn": 27
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 6
                 },
                 {
                     "level": "error",
@@ -1101,138 +1338,6 @@
                         }
                     ],
                     "ruleIndex": 11
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-array-scan",
-                    "message": {
-                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 8
-                },
-                {
-                    "level": "warning",
-                    "ruleId": "schema-type-wrong-object-scan",
-                    "message": {
-                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 9
-                },
-                {
-                    "level": "warning",
-                    "ruleId": "schema-type-wrong-bool-scan",
-                    "message": {
-                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 4
-                },
-                {
-                    "level": "warning",
-                    "ruleId": "schema-type-wrong-integer-scan",
-                    "message": {
-                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 6
-                },
-                {
-                    "level": "warning",
-                    "ruleId": "schema-type-wrong-number-scan",
-                    "message": {
-                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 7
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-pattern-scan",
-                    "message": {
-                        "text": "The generated value does not follow the property pattern for strings"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 675,
-                                    "startColumn": 30
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 10
                 },
                 {
                     "level": "none",
@@ -1610,72 +1715,6 @@
                 },
                 {
                     "level": "error",
-                    "ruleId": "schema-type-wrong-bool-scan",
-                    "message": {
-                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 952,
-                                    "startColumn": 24
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 4
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-string-scan",
-                    "message": {
-                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 952,
-                                    "startColumn": 24
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 5
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-integer-scan",
-                    "message": {
-                        "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 952,
-                                    "startColumn": 24
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 6
-                },
-                {
-                    "level": "error",
                     "ruleId": "schema-type-wrong-number-scan",
                     "message": {
                         "text": "The generated value is of the type number instead of the type \u2018object\u2019"
@@ -1694,7 +1733,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 7
+                    "ruleIndex": 5
                 },
                 {
                     "level": "warning",
@@ -1716,7 +1755,73 @@
                             }
                         }
                     ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-string-scan",
+                    "message": {
+                        "text": "The generated value is of the type string instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
                     "ruleIndex": 8
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018object\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 952,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
                 },
                 {
                     "level": "error",
@@ -1764,28 +1869,6 @@
                 },
                 {
                     "level": "error",
-                    "ruleId": "schema-type-wrong-object-scan",
-                    "message": {
-                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 9
-                },
-                {
-                    "level": "error",
                     "ruleId": "schema-type-wrong-bool-scan",
                     "message": {
                         "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
@@ -1798,13 +1881,13 @@
                                     "index": 1
                                 },
                                 "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
+                                    "startLine": 969,
+                                    "startColumn": 18
                                 }
                             }
                         }
                     ],
-                    "ruleIndex": 4
+                    "ruleIndex": 7
                 },
                 {
                     "level": "error",
@@ -1820,13 +1903,13 @@
                                     "index": 1
                                 },
                                 "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
+                                    "startLine": 969,
+                                    "startColumn": 18
                                 }
                             }
                         }
                     ],
-                    "ruleIndex": 6
+                    "ruleIndex": 4
                 },
                 {
                     "level": "error",
@@ -1842,13 +1925,13 @@
                                     "index": 1
                                 },
                                 "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
+                                    "startLine": 969,
+                                    "startColumn": 18
                                 }
                             }
                         }
                     ],
-                    "ruleIndex": 7
+                    "ruleIndex": 5
                 },
                 {
                     "level": "error",
@@ -1864,79 +1947,13 @@
                                     "index": 1
                                 },
                                 "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
+                                    "startLine": 969,
+                                    "startColumn": 18
                                 }
                             }
                         }
                     ],
-                    "ruleIndex": 8
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-pattern-scan",
-                    "message": {
-                        "text": "The generated value does not follow the property pattern for strings"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 10
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-minlength-scan",
-                    "message": {
-                        "text": "The generated value does not follow the property minLength for strings"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 13
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-maxlength-scan",
-                    "message": {
-                        "text": "The generated value does not follow the property maxLength for strings"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 960,
-                                    "startColumn": 19
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 11
+                    "ruleIndex": 6
                 },
                 {
                     "level": "error",
@@ -1959,94 +1976,6 @@
                         }
                     ],
                     "ruleIndex": 9
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-bool-scan",
-                    "message": {
-                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 969,
-                                    "startColumn": 18
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 4
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-integer-scan",
-                    "message": {
-                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 969,
-                                    "startColumn": 18
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 6
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-number-scan",
-                    "message": {
-                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 969,
-                                    "startColumn": 18
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 7
-                },
-                {
-                    "level": "error",
-                    "ruleId": "schema-type-wrong-array-scan",
-                    "message": {
-                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
-                    },
-                    "locations": [
-                        {
-                            "physicalLocation": {
-                                "artifactLocation": {
-                                    "uri": "OASFiles/pixi.json",
-                                    "index": 1
-                                },
-                                "region": {
-                                    "startLine": 969,
-                                    "startColumn": 18
-                                }
-                            }
-                        }
-                    ],
-                    "ruleIndex": 8
                 },
                 {
                     "level": "error",
@@ -2134,7 +2063,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 4
+                    "ruleIndex": 7
                 },
                 {
                     "level": "error",
@@ -2156,7 +2085,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 5
+                    "ruleIndex": 8
                 },
                 {
                     "level": "error",
@@ -2178,7 +2107,7 @@
                             }
                         }
                     ],
-                    "ruleIndex": 8
+                    "ruleIndex": 6
                 },
                 {
                     "level": "error",
@@ -2245,6 +2174,182 @@
                         }
                     ],
                     "ruleIndex": 15
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-number-scan",
+                    "message": {
+                        "text": "The generated value is of the type number instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 5
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-array-scan",
+                    "message": {
+                        "text": "The generated value is of the type array instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 6
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-object-scan",
+                    "message": {
+                        "text": "The generated value is of the type object instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 9
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-bool-scan",
+                    "message": {
+                        "text": "The generated value is of the type boolean instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 7
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-type-wrong-integer-scan",
+                    "message": {
+                        "text": "The generated value is of the type integer instead of the type \u2018string\u2019"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 4
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-pattern-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property pattern for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 10
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-minlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property minLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 13
+                },
+                {
+                    "level": "error",
+                    "ruleId": "schema-maxlength-scan",
+                    "message": {
+                        "text": "The generated value does not follow the property maxLength for strings"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "OASFiles/pixi.json",
+                                    "index": 1
+                                },
+                                "region": {
+                                    "startLine": 960,
+                                    "startColumn": 19
+                                }
+                            }
+                        }
+                    ],
+                    "ruleIndex": 11
                 },
                 {
                     "level": "none",
