@@ -60,7 +60,7 @@ jobs:
           default-collection-name: Code-Scanning-${{ steps.getprnumber.outputs.PR_ID }}
           # Upload results to Github code scanning
           upload-to-code-scanning: true
-          log-level: debug
+          log-level: info
           json-report: audit-action-report-${{ github.run_id }}
           sarif-report: 42Crunch_AuditReport_${{ github.run_id }}.SARIF
       - name: save-audit-report
