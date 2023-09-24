@@ -12,6 +12,7 @@
     },
     "version": "4.2"
   },
+  "x-42c-accept-empty-security": true,
   "servers": [
     {
       "url": "https://photo-demo.westeurope.cloudapp.azure.com/version1/api"
@@ -59,13 +60,8 @@
                     "type": "string"
                   },
                   "pass": {
-                    "maxLength": 64,
-                    "minLength": 8,
-                    "type": "string",
-                    "format": "o:common:password",
-                    "example": "mygood2!pass",
-                    "x-42c-format": "o:common:password",
-                    "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$"
+                  
+                    "type": "string"
                   }
                 }
               }
