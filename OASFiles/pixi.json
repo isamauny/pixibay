@@ -57,21 +57,10 @@
                 "type": "object",
                 "properties": {
                   "user": {
-                    "type": "string",
-                    "format": "email",
-                    "example": "foo@bar.com",
-                    "pattern": "^\\w+(?:[\\-.]\\w+)*@[0-9A-Za-z]+(?:[\\-.][0-9A-Za-z]+)*\\.(?:[A-Za-z][0-9A-Za-z]+|[0-9]+[A-Za-z][0-9A-Za-z]*)$",
-                    "minLength": 5,
-                    "maxLength": 68,
-                    "x-42c-format": "o:email"
+                    "type": "string"
                   },
                   "pass": {
-                    "type": "string",
-                    "format": "o:common:password",
-                    "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$",
-                    "minLength": 8,
-                    "maxLength": 64,
-                    "x-42c-format": "o:common:password"
+                    "type": "string"
                   }
                 }
               }
