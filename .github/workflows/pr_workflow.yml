@@ -68,7 +68,7 @@ jobs:
         if: always()        
         uses: actions/upload-artifact@v3
         with:
-          name: auditaction-report-${{ github.run_id }}
+          name: audit-action-report-${{ github.run_id }}
           path: audit-action-report-${{ github.run_id }}.json
           if-no-files-found: error
       - name: save-sarif-report
@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: audit-sarif-report-${{ github.run_id }}
-          path: audit-action-report-${{ github.run_id }}.sarif
+          path: audit-sarif-report-${{ github.run_id }}.sarif
           if-no-files-found: error    
 
   # We use the output of the previous step to scan the APIs       
