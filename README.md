@@ -1,4 +1,4 @@
-# 42Crunch API Discovery 
+# 42Crunch API Discovery - In a PR
 Public repository to demo Github code scanning and git repo discovery.
 
 ## How to use 
