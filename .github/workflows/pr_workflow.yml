@@ -62,10 +62,10 @@ jobs:
           # Upload results to Github code scanning
           upload-to-code-scanning: true
           log-level: debug
+          json-report: audit-action-report-${{ github.run_id }}.json
           sarif-report: audit-sarif-report-${{ github.run_id }}.sarif
-          json-report: audit-action-report-${{ github.run_id }}.json 
       - name: save-audit-report
-        if: always()        
+        if: always()   
         uses: actions/upload-artifact@v3
         with:
           name: audit-action-report-${{ github.run_id }}
