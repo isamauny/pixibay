@@ -54,7 +54,7 @@ jobs:
           echo "PR ID is:  $pr_id"
           echo "PR_ID=$pr_id" >> $GITHUB_OUTPUT
       - name: 42crunch-static-api-testing
-        uses: 42crunch/api-security-audit-action@v3.7.0
+        uses: 42crunch/api-security-audit-action@v3.8.1
         with:
           api-token: ${{ secrets.API_TOKEN }}
           platform-url: ${{ env.PLATFORM_URL}}
@@ -62,8 +62,8 @@ jobs:
           # Upload results to Github code scanning
           upload-to-code-scanning: true
           log-level: debug
-          sarif-report: audit-sarif-report-${{ github.run_id }}
-          json-report: audit-action-report-${{ github.run_id }}
+          sarif-report: audit-sarif-report-${{ github.run_id }}.sarif
+          json-report: audit-action-report-${{ github.run_id }}.json 
       - name: save-audit-report
         if: always()        
         uses: actions/upload-artifact@v3
@@ -71,6 +71,13 @@ jobs:
           name: auditaction-report-${{ github.run_id }}
           path: audit-action-report-${{ github.run_id }}.json
           if-no-files-found: error
+      - name: save-sarif-report
+        if: always()        
+        uses: actions/upload-artifact@v3
+        with:
+          name: audit-sarif-report-${{ github.run_id }}
+          path: audit-action-report-${{ github.run_id }}.sarif
+          if-no-files-found: error    
 
   # We use the output of the previous step to scan the APIs       
   run_42c_scan:
