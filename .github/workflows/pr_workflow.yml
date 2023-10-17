@@ -62,6 +62,7 @@ jobs:
           # Upload results to Github code scanning
           upload-to-code-scanning: true
           log-level: debug
+          sarif-report: audit-sarif-report-${{ github.run_id }}
           json-report: audit-action-report-${{ github.run_id }}
       - name: save-audit-report
         if: always()        
