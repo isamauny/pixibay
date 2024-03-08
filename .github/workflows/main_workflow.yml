@@ -32,7 +32,6 @@ on:
 env:
   PLATFORM_URL: https://demolabs.42crunch.cloud
   PLATFORM_SERVICE_ENDPOINT: services.demolabs.42crunch.cloud:8001
-  TOKEN_ENV_VAR: ACCESS_TOKEN
 
 permissions:
   contents: read
@@ -50,14 +49,12 @@ jobs:
       - name: 42crunch-static-api-testing
         uses: 42crunch/api-security-audit-action@v3.8.1
         with:
-          # Please create free account at https://platform.42crunch.com/register
-          # Follow these steps to configure API_TOKEN https://docs.42crunch.com/latest/content/tasks/integrate_github_actions.htm
           api-token: ${{ secrets.API_TOKEN }}
           platform-url: ${{ env.PLATFORM_URL}}
           default-collection-name: Code-Scanning--${{ github.ref_name }}
           # Upload results to Github code scanning
           upload-to-code-scanning: true
-          log-level: debug
+          log-level: info
           json-report: audit-action-report-${{ github.run_id }}
       - name: save-audit-report
         if: always()        
@@ -88,8 +85,8 @@ jobs:
           login_response=$(python .42c/scripts/pixi-login.py -u ${{ vars.PIXI_USER_NAME }} -p ${{ secrets.USER_PASS }} -t ${{ vars.PIXI_TARGET_URL }})
           echo $login_response
           echo "PIXI_TOKEN=$login_response" >> $GITHUB_OUTPUT
-      - name: upload_v1_scan_config
-        id: upload_v1_scan_config
+      - name: create_scan_configuration
+        id: create_scan_config
         run: | 
           scanconfig_response=$(python .42c/scripts/scan_v1_config.py ${{github.server_url}}/${{ github.repository }} ${{ github.ref }} ${{ secrets.API_TOKEN }} '{$ACCESS_TOKEN}' ${{env.PLATFORM_URL}})
           echo $scanconfig_response
@@ -101,8 +98,8 @@ jobs:
           method: POST
           contentType: "application/json"
           customHeaders: '{"Accept": "application/json"}'
-          data: '{"token": "${{ steps.upload_v1_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}-${{ github.run_attempt }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
-      - name: upload scan results
+          data: '{"token": "${{ steps.create_scan_config.outputs.SCANV1_TOKEN }}","name": "scand-${{ github.run_id }}-${{ github.run_attempt }}","platformService": "${{ env.PLATFORM_SERVICE_ENDPOINT }}","scandImage": "${{vars.SCAN_AGENT_V1}}","expirationTime": 600,"env": { "SECURITY_ACCESS_TOKEN": "${{ steps.get_pixi_token.outputs.PIXI_TOKEN }}"}}'
+      - name: analyse scan results
         uses: 42crunch/cicd-github-actions@v1.0.1
         with:
           api-token: ${{ secrets.API_TOKEN }}
